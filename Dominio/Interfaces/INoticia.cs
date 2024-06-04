@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Dominio.Interfaces
 {
-	public interface INoticia : IGenericos<INoticia>
+	public interface INoticia : IGenericos<Noticia>
 	{
-		Task Atualizar(Noticia noticia);
-		Task<List<Noticia>> ListarNoticias(Expression<Func<Noticia,bool>> exNoticia);
+		Task<List<Noticia>> ListarNoticias(Expression<Func<Noticia, bool>> exNoticia);
 	}
+}
 }
