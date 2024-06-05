@@ -36,7 +36,7 @@ namespace Infraestrutura.Configuracoes
 		}
 		public string ObterStringConexao()
 		{
-			string strcon = "Data Source=DESKTOP - MRS4S42\\SQLEXPRESS;Initial Catalog=API_DDD;Integrated Security=False;User ID=;Password=;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False";
+			string strcon = "Data Source=DESKTOP-MRS4S42\\SQLEXPRESS;Initial Catalog=API_DDD;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
 			return strcon;
 		}
 	}
