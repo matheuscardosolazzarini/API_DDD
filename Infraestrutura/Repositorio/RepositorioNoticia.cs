@@ -1,7 +1,7 @@
 ﻿using Dominio.Interfaces;
 using Entidades.Entidades;
 using Infraestrutura.Configuracoes;
-using Infraestrutura.Repostorio.Genericos;
+using Infraestrutura.Repositorio.Genericos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infraestrutura.Repostorio
+namespace Infraestrutura.Repositorio
 {
 	public class RepositorioNoticia : RepositorioGenerico<Noticia>, INoticia
 	{

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infraestrutura.Repostorio.Genericos
+namespace Infraestrutura.Repositorio.Genericos
 {
 	public class RepositorioGenerico<T> : IGenericos<T>, IDisposable where T : class
 	{

@@ -11,13 +11,18 @@ namespace Infraestrutura.Configuracoes
 {
 	public class Contexto : IdentityDbContext<ApplicationUser>
 	{
-		public Contexto(DbContextOptions<Contexto> opcoes): base(opcoes) 
+
+		public Contexto()
 		{
+
+		}
+		public Contexto(DbContextOptions<Contexto> opcoes) : base(opcoes)
+		{
+
 		}
 
 		public DbSet<Noticia> Noticia { get; set; }
 		public DbSet<ApplicationUser> ApplicationUser { get; set; }
-
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -34,12 +39,17 @@ namespace Infraestrutura.Configuracoes
 
 			base.OnModelCreating(builder);
 		}
+
 		public string ObterStringConexao()
 		{
-			string strcon = "Data Source=DESKTOP-MRS4S42\\SQLEXPRESS;Initial Catalog=API_DDD;Integrated Security=True;Encrypt=True;Trust Server Certificate=True";
+			string strcon = "Data Source=DESKTOP-MRS4S42\\SQLEXPRESS;Initial Catalog=API_DDD;Integrated Security=True";
 			return strcon;
 		}
+
+
+
 	}
 }
+
 
 

@@ -32,7 +32,6 @@ namespace Entidades.Entidades
 		public DateTime DataCadastro { get; set; }
 
 		[Column("NTC_DATA_ALTERACAO")]
-
 		public DateTime DataAlteracao { get; set;}
 
 

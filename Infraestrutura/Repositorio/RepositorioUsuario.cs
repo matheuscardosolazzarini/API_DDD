@@ -1,15 +1,17 @@
 ﻿using Dominio.Interfaces;
 using Entidades.Entidades;
+using Entidades.Enums;
 using Infraestrutura.Configuracoes;
-using Infraestrutura.Repostorio.Genericos;
+using Infraestrutura.Repositorio.Genericos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace Infraestrutura.Repostorio
+namespace Infraestrutura.Repositorio
 {
 	public class RepositorioUsuario : RepositorioGenerico<ApplicationUser>, IUsuario
 	{
@@ -32,7 +34,8 @@ namespace Infraestrutura.Repostorio
 							Email = email,
 							PasswordHash = senha,
 							Idade = idade,
-							Celular = celular
+							Celular = celular,
+							Tipo = TipoUsuario.Comum
 						});
 					await data.SaveChangesAsync();
 				}
@@ -44,6 +47,28 @@ namespace Infraestrutura.Repostorio
 			}
 
 			return true;
+		}
+
+		public async Task<bool> ExisteUsuario(string email, string senha)
+		{
+			try
+			{
+				using (var data = new Contexto(_OptionBuilder))
+				{
+					return await data.ApplicationUser
+						.Where(u => u.Email.Equals(email) && u.PasswordHash.Equals(senha))
+						.AsNoTracking()
+						.AnyAsync();
+					
+				}
+			}
+			catch (Exception)
+			{
+
+				return false;
+			}
+
+			
 		}
 	}
 }
