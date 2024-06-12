@@ -4,6 +4,7 @@ using Entidades.Enums;
 using Infraestrutura.Configuracoes;
 using Infraestrutura.Repositorio.Genericos;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,7 +71,29 @@ namespace Infraestrutura.Repositorio
 
 			
 		}
+
+		public async Task<string> RetornaIdUsuario(string email)
+		{
+			try
+			{
+				using (var data = new Contexto(_OptionBuilder))
+				{
+					var usuario =  await data.ApplicationUser
+						.Where(u => u.Email.Equals(email))
+						.AsNoTracking()
+						.FirstOrDefaultAsync();
+
+					return usuario.Id;
+
+				}
+			}
+			catch (Exception)
+			{
+
+				return string.Empty;
+			}
+		}
 	}
-}
+	}
 
 
